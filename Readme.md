@@ -68,7 +68,10 @@ This behavior is implemented in `script.js` and uses live question data from the
 
 ### Screenshot
 
-![Game board screenshot](./board.jpg)
+<figure>
+	<img src="./board.jpg" alt="Quiz & Ladder game board" width="640" />
+	<figcaption>Figure: Quiz & Ladder game board — click to open the full image.</figcaption>
+</figure>
 
 ### How to play (rules)
 
