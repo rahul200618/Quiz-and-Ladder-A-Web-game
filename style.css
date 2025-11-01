@@ -1,0 +1,316 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --green-dark: #2d5016;
+    --green-medium: #4caf50;
+    --green-light: #e8f5e9;
+    --gold: #ffd700;
+    --orange: #ff9800;
+    --border-color: #3d6b2e;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: url('bg-forest.jpg') center/cover fixed;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.game-container {
+    max-width: 1400px;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    color: var(--gold);
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.game-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr 250px;
+    gap: 30px;
+    align-items: start;
+}
+
+.player-token-img {
+    width: 50px;
+    height: 50px;
+}  
+
+.player-section,
+.dice-section {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 4px solid var(--border-color);
+}
+
+.player-section h2,
+.dice-section h2 {
+    color: var(--green-dark);
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.player {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: #f5f5f5;
+    border-radius: 10px;
+    transition: all 0.3s;
+    border: 3px solid transparent;
+    margin-bottom: 15px;
+}
+
+.player:hover {
+    background: var(--green-light);
+    transform: scale(1.1);
+}
+
+.player-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.player-name {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.player-position {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.player-position strong {
+    color: var(--green-dark);
+    font-size: 1.2em;
+}
+
+.player.active {
+    background: linear-gradient(135deg, var(--green-medium), #2e7d32);
+    color: white;
+    border-color: var(--gold);
+}
+
+.player.active .player-name,
+.player.active .player-position {
+    color: white;
+}
+
+.player.active .player-position strong {
+    color: var(--gold);
+}
+
+.board-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    width: 600px;
+    height: 600px;
+    border-radius: 15px;
+    border: 8px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+    
+}
+
+.board-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cell {
+    position: relative;
+    z-index: 1;
+}
+
+.cell:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+.player-marker {
+    position: absolute;
+    width: 40px;
+    height: 48px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.8));
+}
+
+.dice-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.dice {
+    width: 120px;
+    height: 120px;
+    background: white;
+    border: 4px solid var(--green-dark);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 64px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    margin-bottom: 5px;
+
+}
+
+button {
+    padding: 15px 40px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+    margin-top: 5px;
+}
+.roll-btn {
+    background: linear-gradient(135deg, var(--green-medium), #2e7d32);
+    box-shadow: 0 4px 15px rgba(76,175,80,0.4);
+    margin-bottom: 10px;
+}
+
+.roll-btn:hover:not(:disabled) {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(76,175,80,0.6);
+}
+
+.roll-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.reset-btn {
+    background: linear-gradient(135deg, var(--orange), #f57c00);
+    box-shadow: 0 4px 15px rgba(255,152,0,0.4);
+    margin-top: 10px;
+}
+
+.reset-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255,152,0,0.6);
+}
+
+.game-status {
+    text-align: center;
+    font-size: 1.1em;
+    color: var(--green-dark);
+    font-weight: bold;
+    padding: 15px;
+    background: var(--green-light);
+    border-radius: 10px;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.game-status.winner {
+    background: linear-gradient(135deg, var(--gold), #ffed4e);
+}
+
+.quiz-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.quiz-content {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+}
+
+.quiz-content h2 {
+    color: var(--green-dark);
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.quiz-message {
+    color: #666;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.quiz-question {
+    color: #333;
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.quiz-answers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.quiz-answer {
+    padding: 20px;
+    font-size: 1em;
+    background: linear-gradient(135deg, var(--green-light), #c8e6c9);
+    border: 3px solid var(--green-medium);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+    color: var(--green-dark);
+}
+
+.quiz-answer:hover {
+    background: linear-gradient(135deg, var(--green-medium), #2e7d32);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(76,175,80,0.4);
+}
