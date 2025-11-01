@@ -1,6 +1,8 @@
 A small static web project containing a single-page site built with HTML, CSS, and JavaScript. This repository includes the markup, styles, and client-side logic for the final project of the "Programming the Web" course.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE) [![Live demo](https://img.shields.io/badge/Live-Demo-blue?logo=github)](https://rahul200618.github.io/Quiz-and-Ladder-A-Web-game/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE) [![Live demo](https://img.shields.io/badge/Live-Demo-blue?logo=github)](https://rahul200618.github.io/Quiz-and-Ladder-A-Web-game/) [![View Repo](https://img.shields.io/badge/View-Repo-blue?logo=github)](https://github.com/rahul200618/Quiz-and-Ladder-A-Web-game)
+
+Check out my other projects from "Programming the Web" [here](https://rahul200618.github.io/Programming-the-web/) ([view repository](https://github.com/rahul200618/Programming-the-web)).
 
 # Quiz-and-Ladder-A-Web-game
 
@@ -128,5 +130,3 @@ If you'd like, I can also:
 - Add an embedded screenshot resize and caption to the README.
 - Add a license badge image that links to GitHub's license detection (instead of the local `LICENSE`).
 - Commit and push this README update for you (I'll do that next if you'd like). 
-
-
